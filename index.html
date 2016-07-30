@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>簡易分組工具</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>簡易分組工具</h1>
+        </div>
+
+        <br><br>
+
+        <form class="form-inline" role="form">
+
+         <div class="form-group">
+
+           <label for="email" class="col-md-offset-7 control-label">抽獎名單（不同人名以逗號區分）：</label>
+
+           <br><br><br>
+
+           <textarea rows="4" cols="50" class="col-md-offset-6">
+
+           </textarea>
+
+         </div>
+
+         <br><br>
+
+         <div class="form-group">
+
+             <button class="btn btn-default col-md-6 col-md-offset-10" onclick="group()">開始分組</button>
+
+         </div>
+
+       </form>
+
+       <br><br>
+
+       <div id="result">
+           分組結果：
+       </div>
+
+</body>
+
+<script src="js/main.js"></script>
+
+</html>
