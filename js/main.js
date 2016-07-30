@@ -1,7 +1,63 @@
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+/**
+ * Group all of the members.
+ *
+ */
 
-  ga('create', 'UA-81610791-1', 'auto');
-  ga('send', 'pageview');
+function group(){
+
+    document.getElementById('result').innerHTML= "分組名單：<br><br> <ul> </ul>";
+
+    var members = document.getElementById('members').value.trim();
+
+    var memberArray = members.split(",");
+    var newMembers = shuffle(memberArray);
+
+    var i = newMembers.length;
+    var groupNumber = 1;
+
+    while (i--){
+
+        var groupMembers1 = newMembers.shift();
+        var groupMembers2 = newMembers.shift();
+
+        //If group mebmer underdefined, break the loop
+
+        if(!groupMembers1 || !groupMembers2){
+            break;
+        }
+
+        var message = '第' + groupNumber + '組：' + groupMembers1 + '，' + groupMembers2;
+
+        $("#result ul").append('<li>' + message + '</li>');
+
+        groupNumber++;
+
+    }
+}
+
+/**
+ * Shuffle an array.
+ *
+ * @Param {Array} array
+ * @Return {Array} array
+ */
+
+function shuffle(array) {
+
+  var currentIndex = array.length, tmp, randomIndex;
+
+  // While there remain elements to shuffle
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element
+    tmp = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = tmp;
+  }
+
+  return array;
+}

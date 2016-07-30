@@ -19,21 +19,21 @@
 
         <br><br>
 
-        <form class="form-inline" role="form">
+        <form class="form-inline" role="form" onsubmit="return false;">
 
          <div class="form-group">
 
-           <label for="email" class="col-md-offset-7 control-label">抽獎名單（不同人名以逗號區分）：</label>
+           <label for="members" class="col-md-offset-7 control-label">抽獎名單（不同人名以逗號區分）：</label>
 
            <br><br><br>
 
-           <textarea rows="4" cols="50" class="col-md-offset-6">
+           <textarea rows="4" cols="50" id="members" class="col-md-offset-6" >
 
            </textarea>
 
          </div>
 
-         <br><br>
+          <br><br><br>
 
          <div class="form-group">
 
@@ -46,11 +46,17 @@
        <br><br>
 
        <div id="result">
-           分組結果：
+
+           分組名單：<br><br>
+
+           <ul>
+
+           </ul>
        </div>
 
 </body>
 
+<script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/main.js"></script>
 
 </html>
