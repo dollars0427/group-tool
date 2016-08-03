@@ -8,31 +8,53 @@ function group(){
     document.getElementById('result').innerHTML= "分組名單：<br><br> <ul> </ul>";
 
     var members = document.getElementById('members').value.trim();
+    var memberNum = document.getElementById('groupNum').value.trim();
+
+    if(isNaN(memberNum) || memberNum == 0){
+        alert('每組人數不能為0或非數字！');
+        return;
+    }
+
+    if(memberNum > members.length){
+        alert('每組人數不能大於成員人數！');
+        return;
+    }
+
 
     var memberArray = members.split(",");
     var newMembers = shuffle(memberArray);
-
-    var i = newMembers.length;
     var groupNumber = 1;
 
-    while (i--){
+    //If memberNum equal 1, show each member as group
 
-        var groupMembers1 = newMembers.shift();
-        var groupMembers2 = newMembers.shift();
+    if(memberNum == 1){
+        for(var i = 0; i < memberArray.length; i++){
+            $("#result ul").append('<li> 第'  + groupNumber + '組：' + newMembers[i] + '</li>');
+            groupNumber++;
+        }
+        return;
+    }
 
-        //If group mebmer underdefined, break the loop
+    //If memberNum more than 1, show each group by this number
 
-        if(!groupMembers1 || !groupMembers2){
-            break;
+    for(var i = 0; i < memberArray.length; i++){
+
+        var group = [];
+
+        for(var i = 0; i < memberNum; i++){
+
+            var member = newMembers.shift();
+
+            group.push(member);
+
         }
 
-        var message = '第' + groupNumber + '組：' + groupMembers1 + '，' + groupMembers2;
-
-        $("#result ul").append('<li>' + message + '</li>');
+        $("#result ul").append('<li> 第'  + groupNumber + '組：' + group + '</li>');
 
         groupNumber++;
-
     }
+
+    $("#result ul").append('<li> 第' + groupNumber + '組：' + newMembers + '</li>');
 }
 
 /**
