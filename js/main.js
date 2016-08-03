@@ -10,19 +10,20 @@ function group(){
     var members = document.getElementById('members').value.trim();
     var memberNum = document.getElementById('groupNum').value.trim();
 
+    var memberArray = members.split(',').clean('');
+    var maxMemberNum = memberArray.length;
+    var newMembers = shuffle(memberArray);
+
     if(isNaN(memberNum) || memberNum == 0){
         alert('每組人數不能為0或非數字！');
         return;
     }
 
-    if(memberNum > members.length){
+    if(memberNum > maxMemberNum){
         alert('每組人數不能大於成員人數！');
         return;
     }
 
-
-    var memberArray = members.split(",");
-    var newMembers = shuffle(memberArray);
     var groupNumber = 1;
 
     //If memberNum equal 1, show each member as group
@@ -83,3 +84,21 @@ function shuffle(array) {
 
   return array;
 }
+
+/**
+ * Remove value from an array.
+ *
+ * @Param {string} target
+ * @Return {Array} this
+ */
+
+
+Array.prototype.clean = function(target) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == target) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
